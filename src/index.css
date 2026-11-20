@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --border-color: rgba(203, 213, 225, 0.9);
+  }
+
+  .dark {
+    --bg-primary: #090d16;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Bulletproof Light Mode Text Contrast Guarantee (Excludes code terminals) */
+html.light, html:not(.dark) {
+  color-scheme: light;
+}
+
+html.light :not(#ide-window):not(#ide-window *):not(#java-terminal):not(#java-terminal *)[class*="dark:text-white"],
+html:not(.dark) :not(#ide-window):not(#ide-window *):not(#java-terminal):not(#java-terminal *)[class*="dark:text-white"],
+html.light :not(#ide-window):not(#ide-window *):not(#java-terminal):not(#java-terminal *)[class*="dark:text-slate-100"],
+html:not(.dark) :not(#ide-window):not(#ide-window *):not(#java-terminal):not(#java-terminal *)[class*="dark:text-slate-100"] {
+  color: #0f172a !important;
+}
+
+html.light :not(#ide-window):not(#ide-window *):not(#java-terminal):not(#java-terminal *)[class*="dark:text-slate-200"],
+html:not(.dark) :not(#ide-window):not(#ide-window *):not(#java-terminal):not(#java-terminal *)[class*="dark:text-slate-200"],
+html.light :not(#ide-window):not(#ide-window *):not(#java-terminal):not(#java-terminal *)[class*="dark:text-slate-300"],
+html:not(.dark) :not(#ide-window):not(#ide-window *):not(#java-terminal):not(#java-terminal *)[class*="dark:text-slate-300"] {
+  color: #334155 !important;
+}
+
+html.light :not(#ide-window):not(#ide-window *):not(#java-terminal):not(#java-terminal *)[class*="dark:text-slate-400"],
+html:not(.dark) :not(#ide-window):not(#ide-window *):not(#java-terminal):not(#java-terminal *)[class*="dark:text-slate-400"] {
+  color: #64748b !important;
+}
+
+/* Explicit Bright Syntax Code Styling in Code Terminals in Both Modes */
+#ide-window pre, #ide-window code, 
+#java-terminal pre, #java-terminal code {
+  color: #f8fafc !important;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.code-keyword {
+  color: #60a5fa !important;
+  font-weight: 600;
+}
+.code-string {
+  color: #34d399 !important;
+}
+.code-comment {
+  color: #94a3b8 !important;
+  font-style: italic;
+}
+.code-type {
+  color: #fbbf24 !important;
+  font-weight: 500;
+}
+
+/* Executive Glassmorphism & Surface Styles */
+.glass-card {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-card {
+  background: rgba(15, 22, 36, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+html:not(.dark) .glass-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+}
+
+.glass-card-interactive {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-card-interactive {
+  background: rgba(15, 22, 36, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dark .glass-card-interactive:hover {
+  background: rgba(22, 32, 52, 0.85);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);
+}
+
+html:not(.dark) .glass-card-interactive {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+}
+
+html:not(.dark) .glass-card-interactive:hover {
+  background: #ffffff;
+  border-color: #6366f1;
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12);
+  transform: translateY(-2px);
+}
+
+.glass-pill {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.dark .glass-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+}
+
+html:not(.dark) .glass-pill {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.glass-input {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+}
+
+.dark .glass-input {
+  background: rgba(11, 16, 27, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+}
+
+.dark .glass-input:focus {
+  background: rgba(11, 16, 27, 0.98);
+  border-color: rgba(99, 102, 241, 0.7);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+  outline: none;
+}
+
+html:not(.dark) .glass-input {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+}
+
+html:not(.dark) .glass-input:focus {
+  background: #ffffff;
+  border-color: #4f46e5;
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.15);
+  outline: none;
+}
+
+/* Elegant Architectural Blueprint Canvas */
+.dark .executive-canvas {
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.06) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.04) 0px, transparent 50%);
+  background-size: 32px 32px, 100% 100%, 100% 100%;
+}
+
+html:not(.dark) .executive-canvas {
+  background-image: 
+    radial-gradient(rgba(15, 23, 42, 0.09) 1px, transparent 1px),
+    radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.04) 0px, transparent 50%);
+  background-size: 32px 32px, 100% 100%, 100% 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #090d16;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.25);
+  border-radius: 4px;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.4);
+}
