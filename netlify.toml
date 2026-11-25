@@ -1,0 +1,5 @@
+[build]
+  # Install dependencies from the lockfile before building, so the build works
+  # even when node_modules is not present (it is no longer committed).
+  command = "npm ci --include=dev && npm run build"
+  publish = "dist"
