@@ -18,7 +18,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -33,145 +33,142 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-8 pt-4">
-      {/* Navbar Container with Strong Light Mode Visibility */}
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-200 px-4 sm:px-6 pt-3">
       <div 
-        className={`max-w-6xl mx-auto rounded-xl transition-all duration-300 ${
+        className={`max-w-5xl mx-auto rounded-xl transition-all duration-200 ${
           scrolled 
-            ? 'bg-white border-2 border-slate-300 shadow-xl shadow-slate-300/40 dark:bg-slate-900/90 dark:border-white/15 dark:shadow-2xl py-2.5 px-5' 
-            : 'bg-white/95 border-2 border-slate-300 shadow-lg shadow-slate-200/60 dark:bg-slate-900/80 dark:border-white/10 py-3 px-5 backdrop-blur-md'
+            ? 'bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800 shadow-sm py-2.5 px-4 sm:px-5 backdrop-blur-md' 
+            : 'bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800/80 py-2.5 px-4 sm:px-5 backdrop-blur-sm'
         }`}
       >
         <div className="flex items-center justify-between">
-          {/* Brand Identity */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-mono font-bold text-xs tracking-tighter shadow-sm group-hover:scale-105 transition-transform">
+          
+          {/* Identity */}
+          <a href="#" className="flex items-center gap-2.5 group">
+            <span className="w-7 h-7 rounded-md bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center font-mono font-bold text-xs tracking-tight">
               AA
-            </div>
+            </span>
             <div>
-              <div className="font-bold text-sm tracking-tight text-slate-950 dark:text-white flex items-center gap-1.5">
-                <span>Aatiff Ahameed</span>
-                <span className="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-                  IT
-                </span>
+              <div className="font-semibold text-sm tracking-tight text-slate-900 dark:text-white">
+                Aatiff Ahameed
               </div>
-              <div className="text-[11px] text-slate-600 dark:text-slate-400 font-mono font-medium flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
-                <span>Available for Opportunities</span>
+              <div className="text-[11px] text-slate-500 dark:text-slate-400 font-normal">
+                B.Tech IT &bull; SKCET
               </div>
             </div>
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-lg border border-slate-300 dark:border-white/10">
+          <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 rounded-md transition-all shadow-xs"
+                className="text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors"
               >
                 {link.name}
               </a>
             ))}
           </nav>
 
-          {/* Actions & Theme Toggle */}
-          <div className="hidden lg:flex items-center gap-2.5">
-            {/* Theme Toggle Button */}
+          {/* Actions & Quick Contact */}
+          <div className="hidden sm:flex items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-slate-800 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-white/10 transition-all shadow-xs"
+              className="p-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-              aria-label="Toggle theme mode"
+              aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
                 <Sun className="w-4 h-4 text-amber-400" />
               ) : (
-                <Moon className="w-4 h-4 text-indigo-600" />
+                <Moon className="w-4 h-4 text-slate-600" />
               )}
             </button>
 
-            {/* Direct WhatsApp Action */}
             <a
-              href={`https://wa.me/${personalInfo.cleanPhone}?text=Hi%20Aatiff,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!`}
+              href={`https://wa.me/${personalInfo.cleanPhone}?text=Hi%20Aatiff,%20I%20saw%20your%20portfolio!`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-colors flex items-center gap-1.5"
+              className="px-2.5 py-1.5 rounded-lg text-xs font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 border border-emerald-200 dark:border-emerald-800/80 transition-colors flex items-center gap-1.5"
+              title="Chat on WhatsApp"
             >
-              <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
+              <WhatsAppIcon className="w-3.5 h-3.5" />
               <span>WhatsApp</span>
             </a>
 
-            {/* Direct Gmail Action */}
             <button
               onClick={() => openGmailCompose()}
-              className="px-4 py-1.5 rounded-lg text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 active:scale-95 shadow-sm transition-all flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-700 transition-colors flex items-center gap-1.5"
+              title="Send an email to aatiffahameed@gmail.com"
             >
               <Mail className="w-3.5 h-3.5" />
-              <span>Get in Touch</span>
+              <span>Contact</span>
             </button>
           </div>
 
-          {/* Mobile Menu Controls */}
-          <div className="flex md:hidden items-center gap-2">
+          {/* Mobile Menu Button */}
+          <div className="flex sm:hidden items-center gap-1.5">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-white/10"
-              title="Toggle theme"
+              className="p-1.5 rounded-lg text-slate-600 dark:text-slate-300"
+              aria-label="Toggle theme"
             >
-              {theme === 'dark' ? (
-                <Sun className="w-4 h-4 text-amber-400" />
-              ) : (
-                <Moon className="w-4 h-4 text-indigo-600" />
-              )}
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
             </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-white/10"
-              aria-label="Toggle menu"
+              className="p-1.5 rounded-lg text-slate-700 dark:text-slate-200"
+              aria-label="Open menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
+
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-3 pt-3 border-t border-slate-300 dark:border-white/10 flex flex-col gap-2 pb-2">
-            {navLinks.map((link) => (
+          <div className="sm:hidden pt-3 pb-2 mt-2 border-t border-slate-200 dark:border-slate-800 space-y-2">
+            <div className="flex flex-col space-y-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-2.5 py-1.5 rounded-md text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+
+            <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
               <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 text-sm text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors font-semibold"
+                href={`https://wa.me/${personalInfo.cleanPhone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-1.5 rounded-md text-xs font-medium text-center text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center gap-1.5"
               >
-                {link.name}
+                <WhatsAppIcon className="w-3.5 h-3.5" />
+                <span>WhatsApp</span>
               </a>
-            ))}
-            <div className="flex items-center gap-2 pt-2 border-t border-slate-300 dark:border-white/10 mt-1">
+
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   openGmailCompose();
                 }}
-                className="flex-1 py-2 rounded-lg text-xs font-semibold text-center text-white bg-indigo-600 hover:bg-indigo-700 flex items-center justify-center gap-1.5 shadow-sm"
+                className="flex-1 py-1.5 rounded-md text-xs font-medium text-center text-white bg-slate-900 dark:bg-blue-600 flex items-center justify-center gap-1.5"
               >
                 <Mail className="w-3.5 h-3.5" />
-                <span>Email Aatiff</span>
+                <span>Email</span>
               </button>
-              <a
-                href={`https://wa.me/${personalInfo.cleanPhone}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 py-2 rounded-lg text-xs font-semibold text-center text-white bg-emerald-600 hover:bg-emerald-700 flex items-center justify-center gap-1.5 shadow-sm"
-              >
-                <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
-                <span>WhatsApp</span>
-              </a>
             </div>
           </div>
         )}
+
       </div>
     </header>
   );
