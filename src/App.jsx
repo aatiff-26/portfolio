@@ -17,11 +17,8 @@ function PortfolioContent() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="min-h-screen relative font-sans transition-colors duration-300">
+    <div className="min-h-screen relative font-sans transition-colors duration-200">
       
-      {/* Background Architectural Canvas */}
-      <div className="fixed inset-0 executive-canvas pointer-events-none -z-10"></div>
-
       {/* Header */}
       <Navbar />
 
@@ -38,17 +35,18 @@ function PortfolioContent() {
       {/* Footer */}
       <Footer />
 
-      {/* Floating Action Pill */}
+      {/* Floating Action Quick Controls */}
       <div className="fixed bottom-5 right-5 z-40 flex items-center gap-2">
         <button
           onClick={toggleTheme}
-          className="w-10 h-10 rounded-full glass-card shadow-md text-slate-800 dark:text-slate-200 flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+          className="w-9 h-9 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 shadow-sm flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
           title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          aria-label="Toggle theme"
         >
           {theme === 'dark' ? (
             <Sun className="w-4 h-4 text-amber-400" />
           ) : (
-            <Moon className="w-4 h-4 text-indigo-600" />
+            <Moon className="w-4 h-4 text-slate-700" />
           )}
         </button>
 
@@ -56,18 +54,20 @@ function PortfolioContent() {
           href={`https://wa.me/${personalInfo.cleanPhone}?text=Hi%20Aatiff,%20I%20saw%20your%20portfolio!`}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all"
-          title="Chat on WhatsApp"
+          className="w-9 h-9 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shadow-sm transition-colors"
+          title="Chat on WhatsApp (+91 9150383338)"
+          aria-label="WhatsApp"
         >
-          <WhatsAppIcon className="w-4 h-4" />
+          <WhatsAppIcon className="w-3.5 h-3.5" />
         </a>
 
         <button
           onClick={() => openGmailCompose()}
-          className="w-10 h-10 rounded-full bg-slate-900 dark:bg-indigo-600 hover:bg-slate-800 dark:hover:bg-indigo-500 text-white flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all"
-          title="Open in Gmail (aatiffahameed@gmail.com)"
+          className="w-9 h-9 rounded-full bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white flex items-center justify-center shadow-sm transition-colors"
+          title="Send Email (aatiffahameed@gmail.com)"
+          aria-label="Email"
         >
-          <Mail className="w-4 h-4" />
+          <Mail className="w-3.5 h-3.5" />
         </button>
       </div>
 
